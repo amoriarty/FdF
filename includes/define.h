@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 11:01:10 by alegent           #+#    #+#             */
-/*   Updated: 2014/12/15 13:58:09 by alegent          ###   ########.fr       */
+/*   Updated: 2014/12/15 14:51:31 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
 # define ORANGE 0x00FFA500
-# define VIOLET 0x6600CC
+# define PURPLE 0x6600CC
 #endif

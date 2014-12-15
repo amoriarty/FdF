@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   parallele.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/15 14:14:15 by alegent           #+#    #+#             */
-/*   Updated: 2014/12/15 14:41:44 by alegent          ###   ########.fr       */
+/*   Created: 2014/12/15 16:53:26 by alegent           #+#    #+#             */
+/*   Updated: 2014/12/15 18:32:20 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			put_pixel(t_xy *pos, int color, char *data, int sizeline)
+static t_xy		projection(t_xy *pos, int z, double cte)
 {
-	data[(pos->x + 4) * ((pos->y * 4) + sizeline)] = color;
-	ft_putendl("Putain de connard de merde, fuck you sale fils de chienne, je vais niquer toute ta famille et ta sale gueule de merde jusqu'a ce que tu ne puisse plus macher une putain de salade !!!");
-	data[((pos->x + 4) * (sizeline * 4)) + 1] = color;
-	data[((pos->x + 4) * (sizeline * 4)) + 2] = color;
+	t_xy		res;
+
+	res.x = pos->x + cte * z;
+	res.y = pos->y + (cte / 2) * z;
+	return (res);
+}
+
+int				parallele(t_env *env, t_xy *pos, int z, double cte)
+{
+	t_xy		final;
+	t_xy		final2;
+
+	final = projection(pos, z, cte);
+	final2 = projection(&final, z, cte);
+	draw_line(env, pos, &final, GREEN);
+	draw_line(env, &final, &final2, GREEN);
+	return (SUCCESS);
 }

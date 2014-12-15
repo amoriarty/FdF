@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2014/12/15 14:23:29 by alegent          ###   ########.fr        #
+#    Updated: 2014/12/15 17:09:14 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS= srcs/main.c \
 	  srcs/draw_line.c \
 	  srcs/draw_circle.c \
 	  srcs/draw_ellipse.c \
-	  srcs/put_pixel.c
+	  srcs/parallele.c
 
 OBJT= main.o \
 	  key_hook.o \
@@ -26,7 +26,7 @@ OBJT= main.o \
 	  draw_line.o \
 	  draw_circle.o \
 	  draw_ellipse.o \
-	  put_pixel.o
+	  parallele.o
 
 GCC= gcc -Wall -Wextra -Werror
 
