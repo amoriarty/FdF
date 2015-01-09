@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:51 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/09 16:25:01 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/09 16:38:40 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int				main(void)
 		start.y++;
 		end.y++;
 	}
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+//	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_key_hook(env->win, esc_hook, env);
 	mlx_loop(env->mlx);
 	return (EXIT_SUCCESS);
 }

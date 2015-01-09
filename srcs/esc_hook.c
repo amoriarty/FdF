@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   esc_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:50:58 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/09 16:37:31 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/09 16:34:17 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/09 16:35:59 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include <stdlib.h>
-# include <math.h>
-# include <mlx.h>
-# include "libft.h"
-# include "get_next_line.h"
-# include "struct.h"
-# include "define.h"
+#include "fdf.h"
 
-t_env			*init_mlx(void);
-int				esc_hook(int keycode, t_env *mlx);
-void			put_img_pixel(t_env *env, t_xy *pixel, int color);
-void			draw_line(t_env *env, t_xy *start, t_xy *end, int color);
-
-#endif
+int				esc_hook(int keycode, t_env *mlx)
+{
+	if (mlx == NULL)
+		return (ERROR);
+	if (keycode == KEY_ESC)
+		exit(EXIT_SUCCESS);
+	return (SUCCESS);
+}

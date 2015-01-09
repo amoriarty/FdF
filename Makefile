@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/01/09 16:01:18 by alegent          ###   ########.fr        #
+#    Updated: 2015/01/09 16:38:27 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ NAME= fdf
 
 SRCS= srcs/main.c \
 	  srcs/init_mlx.c \
+	  srcs/esc_hook.c \
 	  srcs/put_img_pixel.c \
 	  srcs/draw_line.c
 
 OBJT= main.o \
 	  init_mlx.o \
+	  esc_hook.o \
 	  put_img_pixel.o \
 	  draw_line.o
 
