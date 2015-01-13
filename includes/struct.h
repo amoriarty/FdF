@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 14:24:15 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/13 15:56:11 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct					s_xy
 typedef struct s_map	t_map;
 struct					s_map
 {
-	char				*line;
+	char				**map_line;
 	t_map				*next;
 };
 

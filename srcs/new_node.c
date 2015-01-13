@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:41:51 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 14:53:42 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/13 15:56:18 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_map			*new_node(char *line)
 	new = (t_map *)malloc(sizeof(t_map));
 	if (!new)
 		return (NULL);
-	new->line = ft_strdup(line);
+	new->map_line = ft_strsplit(line, ' ');
 	new->next = NULL;
 	return (new);
 }

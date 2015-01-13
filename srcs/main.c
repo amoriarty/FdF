@@ -6,29 +6,34 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:51 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 15:03:38 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/13 15:31:11 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 int				main(int ac, char **av)
 {
+	int			x = 0;
 //	t_env		*env;
 	t_map		*map;
 
-	map = NULL;
 	if (ac == 1)
 	{
 		ft_putendl_fd("fdf: usage: fdf [map]", 2);
 		exit(EXIT_FAILURE);
 	}
-	if (ac > 1)
+	if (ac == 2)
 		map = get_map(av[1]);
 	while (map)
 	{
-		ft_putendl(map->line);
+		x = 0;
+		while (map->map_line[x])
+		{
+			ft_putstr(map->map_line[x++]);
+			ft_putchar(' ');
+		}
+		ft_putchar(EOL);
 		map = map->next;
 	}
 //	env = init_mlx();
