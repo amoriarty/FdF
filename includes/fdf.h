@@ -6,12 +6,13 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:58 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 12:19:26 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/13 14:56:07 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+# include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
 # include <mlx.h>
@@ -25,5 +26,9 @@ int				esc_hook(int keycode, t_env *mlx);
 void			put_img_pixel(t_env *env, t_xy *pixel, int color);
 void			draw_line(t_env *env, t_xy *start, t_xy *end, int color);
 t_xy			*init_xy(void);
+t_xy			*get_coor(t_xy *base);
+t_map			*get_map(char *file);
+t_map			*new_node(char *line);
+t_map			*insert_node(t_map *list, char *line);
 
 #endif

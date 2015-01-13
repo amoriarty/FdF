@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 14:24:15 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/13 13:34:16 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/13 15:05:26 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_map			*get_map(char *file)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	int			fd;
+	char		*line;
+	t_map		*map;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-};
-
-typedef struct s_map	t_map;
-struct					s_map
-{
-	char				*line;
-	t_map				*next;
-};
-
-#endif
+	map = NULL;
+	if ((fd = open(file, O_RDONLY)))
+	{
+		while (get_next_line(fd, &line))
+			map = insert_node(map, line);
+	}
+	else
+	{
+		ft_putendl_fd("fdf: Can't read the file", 2);
+		exit(EXIT_FAILURE);
+	}
+	return (map);
+}

@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/01/13 12:17:46 by alegent          ###   ########.fr        #
+#    Updated: 2015/01/13 14:55:42 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,22 @@ SRCS= srcs/main.c \
 	  srcs/esc_hook.c \
 	  srcs/put_img_pixel.c \
 	  srcs/draw_line.c \
-	  srcs/init_xy.c
+	  srcs/init_xy.c \
+	  srcs/get_coor.c \
+	  srcs/get_map.c \
+	  srcs/new_node.c \
+	  srcs/insert_node.c
 
 OBJT= main.o \
 	  init_mlx.o \
 	  esc_hook.o \
 	  put_img_pixel.o \
 	  draw_line.o \
-	  init_xy.o
+	  init_xy.o \
+	  get_coor.o \
+	  get_map.o \
+	  new_node.o \
+	  insert_node.o
 
 GCC= gcc -Wall -Wextra -Werror
 

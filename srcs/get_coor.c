@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   get_coor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 14:24:15 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/13 13:16:41 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/13 13:26:39 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_xy			*get_coor(t_xy *base)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	t_xy		*final;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-};
-
-typedef struct s_map	t_map;
-struct					s_map
-{
-	char				*line;
-	t_map				*next;
-};
-
-#endif
+	final = init_xy();
+	final->x = base->x + CTE * base->z;
+	final->y = (base->y - base->z) + (CTE / 2) * base->z;
+	final->z = base->z;
+	return (final);
+}

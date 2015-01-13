@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   insert_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 14:24:15 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/13 14:47:19 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/13 15:12:23 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_map			*insert_node(t_map *list, char *line)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	t_map		*new;
+	t_map		*tmp;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-};
-
-typedef struct s_map	t_map;
-struct					s_map
-{
-	char				*line;
-	t_map				*next;
-};
-
-#endif
+	if (!(new = new_node(line)))
+		return (NULL);
+	if (!list)
+		return (new);
+	tmp = list;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (list);
+}
