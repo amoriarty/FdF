@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   draw_proj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/13 12:01:45 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/13 12:00:23 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/13 12:06:27 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_xy			draw_proj(t_env *env, t_xy *pos, int color)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	t_xy		proj;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-};
-
-#endif
+	proj.x = pos->x + CTE * pos->z;
+	proj.y = (pos->y - pos->z) + (CTE / 2) * pos->z;
+	draw_line(env, pos, &proj, color);
+	return (proj);
+}

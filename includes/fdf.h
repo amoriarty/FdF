@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:58 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/09 16:37:31 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/13 12:06:38 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_env			*init_mlx(void);
 int				esc_hook(int keycode, t_env *mlx);
 void			put_img_pixel(t_env *env, t_xy *pixel, int color);
 void			draw_line(t_env *env, t_xy *start, t_xy *end, int color);
+t_xy			draw_proj(t_env *env, t_xy *pos, int color);
 
 #endif
