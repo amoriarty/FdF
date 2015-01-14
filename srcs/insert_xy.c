@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   insert_xy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/14 08:57:39 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/14 09:00:14 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/14 10:48:23 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_xy			*insert_xy(t_xy *list, char *value, int x, int y)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	t_xy		*new;
+	t_xy		*tmp;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-	t_xy				*next;
-};
-
-typedef struct s_map	t_map;
-struct					s_map
-{
-	char				**map_line;
-	t_map				*next;
-};
-
-#endif
+	if (!(new = new_xy(value, x, y)))
+		return (NULL);
+	if (!list)
+		return (new);
+	tmp = list;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (list);
+}

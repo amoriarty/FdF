@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   map_to_xy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/14 08:57:39 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/14 09:50:19 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/14 10:47:21 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fdf.h"
 
-typedef struct s_env	t_env;
-struct					s_env
+t_xy			*map_to_xy(t_map *map)
 {
-	void				*mlx;
-	void				*win;
-	void				*img;
-	char				*data;
-	int					bpp;
-	int					sizeline;
-	int					endian;
-};
+	int			x;
+	int			y;
+	t_map		*tmp;
+	t_xy		*new;
 
-typedef struct s_xy		t_xy;
-struct					s_xy
-{
-	int					x;
-	int					y;
-	int					z;
-	t_xy				*next;
-};
-
-typedef struct s_map	t_map;
-struct					s_map
-{
-	char				**map_line;
-	t_map				*next;
-};
-
-#endif
+	x = 0;
+	tmp = map;
+	new = NULL;
+	while (tmp)
+	{
+		y = 0;
+		while (tmp->map_line[y])
+		{
+			new = insert_xy(new, tmp->map_line[y], x, y);
+			y++;
+		}
+		x++;
+		tmp = tmp->next;
+	}
+	return (new);
+}
