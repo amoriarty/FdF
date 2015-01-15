@@ -6,15 +6,22 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 13:16:41 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/14 10:25:57 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/15 15:17:23 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_xy			*get_coor(t_xy **base)
+t_xy			*get_coor(t_xy *base, t_xy *new, int zoom)
 {
-	(*base)->x = (*base)->x + CTE * (*base)->z;
-	(*base)->y = ((*base)->y - (*base)->z) + (CTE / 2) * (*base)->z;
-	return (*base);
+	int			x;
+	int			y;
+
+	y = (base->x - CTE * base->z) * zoom;
+	x = (CTE / 2 * base->z - base->y) * zoom;
+	x *= -1;
+	x += X_SIZE / 2;
+	y += Y_SIZE / 2;
+	new = insert_xy(new, ft_itoa(base->z), x, y);
+	return (new);
 }

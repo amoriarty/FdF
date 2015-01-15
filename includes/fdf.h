@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:58 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/14 10:45:17 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/15 16:04:03 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_map			*new_node(char *line);
 t_map			*insert_node(t_map *list, char *line);
 t_xy			*insert_xy(t_xy *list, char *value, int x, int y);
 t_xy			*map_to_xy(t_map *map);
-t_xy			*get_coor(t_xy **base);
+t_xy			*get_coor(t_xy *base, t_xy *new, int zoom);
+void			draw_vert(t_env *env, t_xy *list, int color);
 
 #endif

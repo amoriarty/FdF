@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_to_xy.c                                        :+:      :+:    :+:   */
+/*   draw_vert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/14 09:50:19 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/14 11:04:44 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/15 14:43:02 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/15 16:08:04 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_xy			*map_to_xy(t_map *map)
+void				draw_vert(t_env *env, t_xy *list, int color)
 {
-	int			x;
-	int			y;
-	t_map		*tmp;
-	t_xy		*new;
+	t_xy			*tmp;
+	t_xy			*tmp2;
 
-	x = 0;
-	tmp = map;
-	new = NULL;
+	tmp = list;
 	while (tmp)
 	{
-		y = 0;
-		while (tmp->map_line[y])
+		tmp2 = list;
+		while (tmp2)
 		{
-			new = insert_xy(new, tmp->map_line[y], x, y);
-			y++;
+			if (tmp->x == tmp2->x)
+				draw_line(env, tmp, tmp2, color);
+			tmp2 = tmp2->next;
 		}
-		x++;
 		tmp = tmp->next;
 	}
-	return (new);
 }
