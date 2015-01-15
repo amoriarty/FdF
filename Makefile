@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/01/15 15:03:20 by alegent          ###   ########.fr        #
+#    Updated: 2015/01/15 16:33:43 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS= srcs/main.c \
 	  srcs/insert_node.c \
 	  srcs/insert_xy.c \
 	  srcs/map_to_xy.c \
-	  srcs/draw_vert.c
+	  srcs/draw_vert.c \
+	  srcs/in_img.c
 
 OBJT= main.o \
 	  init_mlx.o \
@@ -38,7 +39,8 @@ OBJT= main.o \
 	  insert_node.o \
 	  insert_xy.o \
 	  map_to_xy.o \
-	  draw_vert.o
+	  draw_vert.o \
+	  in_img.o
 
 GCC= gcc -Wall -Wextra -Werror
 

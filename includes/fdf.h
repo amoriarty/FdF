@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:58 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/15 16:04:03 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/15 16:34:21 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_xy			*insert_xy(t_xy *list, char *value, int x, int y);
 t_xy			*map_to_xy(t_map *map);
 t_xy			*get_coor(t_xy *base, t_xy *new, int zoom);
 void			draw_vert(t_env *env, t_xy *list, int color);
+int				in_img(t_env *env, t_xy *tmp);
 
 #endif

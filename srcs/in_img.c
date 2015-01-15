@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_coor.c                                         :+:      :+:    :+:   */
+/*   in_img.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/13 13:16:41 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/15 16:40:15 by alegent          ###   ########.fr       */
+/*   Created: 2015/01/15 16:27:52 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/15 17:16:32 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_xy			*get_coor(t_xy *base, t_xy *new, int zoom)
+int				in_img(t_env *env, t_xy *tmp)
 {
-	int			x;
-	int			y;
-
-	y = (base->x - CTE * base->z) * zoom;
-	x = (CTE / 2 * base->z - base->y) * zoom;
-	x *= -1;
-	x += X_SIZE / 3;
-	y += Y_SIZE / 2;
-	new = insert_xy(new, ft_itoa(base->z), x, y);
-	return (new);
+	env = env;
+	if (tmp->x > tmp->next->x)
+		return (FALSE);
+	if (tmp->x > X_SIZE)
+		return (FALSE);
+	if (tmp->next->x > X_SIZE)
+		return (FALSE);
+	if (tmp->y > Y_SIZE)
+		return (FALSE);
+	if (tmp->next->y > Y_SIZE)
+		return (FALSE);
+	return (TRUE);
 }

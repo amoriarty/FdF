@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:50:51 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/15 16:23:39 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/15 16:44:23 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ int				main(int ac, char **av)
 	tmp = new;
 	while (tmp)
 	{
-		new2 = get_coor(tmp, new2, 20);
+		new2 = get_coor(tmp, new2, 50);
 		tmp = tmp->next;
 	}
 	tmp = new2;
 	print_coor(new, new2);
 	while (tmp->next)
 	{
-	 	if ((tmp->x < tmp->next->x) && (tmp->x < X_SIZE/2 * env->bpp / 8) && (tmp->next->x < X_SIZE/2 * env->bpp / 8) && (tmp->y < Y_SIZE/2 * env->sizeline) && (tmp->next->y < Y_SIZE/2 * env->sizeline))
+	 	if (in_img(env, tmp) == TRUE)
 			draw_line(env, tmp, tmp->next, PURPLE);
 		tmp = tmp->next;
 	}
-	draw_vert(env, new2, BLUE);
+	draw_vert(env, new2, PURPLE);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	mlx_key_hook(env->win, esc_hook, env);
 	mlx_loop(env->mlx);
