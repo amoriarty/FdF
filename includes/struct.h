@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:54:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/27 10:55:57 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/28 13:10:38 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ struct					s_env
 	int					endian;
 	t_xy				*map;
 	t_xy				*max;
+	t_xy				*origin;
+	int					zoom;
 };
 
 typedef struct s_node	t_node;

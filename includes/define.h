@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 11:01:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/27 16:24:37 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/28 13:39:09 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@
 # define FAILURE 0
 # define X_SIZE 2160
 # define Y_SIZE 1300
-# define X_ORG 720
-# define Y_ORG 433
 # define PI 3.14159265358979323846
 # define CTE 0.5
 # define ZOOM 20
 # define KEY_ESC 53
 # define KEY_Q 12
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_PLUS 69
+# define KEY_MOIN 78
 /*
 ** Color defined
 */

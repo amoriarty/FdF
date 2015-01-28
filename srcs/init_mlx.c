@@ -6,11 +6,24 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 15:00:08 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/27 10:56:25 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/28 13:11:41 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static t_xy			*malloc_origin(void)
+{
+	t_xy			*new;
+
+	if (!(new = (t_xy *)malloc(sizeof(t_xy))))
+		return (NULL);
+	new->x = 0;
+	new->y = 0;
+	new->z = 0;
+	new->next = NULL;
+	return (new);
+}
 
 t_env				*init_mlx(void)
 {
@@ -35,5 +48,7 @@ t_env				*init_mlx(void)
 	}
 	env->map = NULL;
 	env->max = NULL;
+	env->origin = malloc_origin();
+	env->zoom = 10;
 	return (env);
 }

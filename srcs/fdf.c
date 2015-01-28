@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 10:48:02 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/27 16:25:16 by alegent          ###   ########.fr       */
+/*   Updated: 2015/01/28 13:11:27 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void		draw_vert(t_env *env)
 		{
 			if (tmp->y == tmp0->y && tmp->x == tmp0->x + 1)
 			{
-				tmp1 = projection(tmp);
-				tmp2 = projection(tmp0);
+				tmp1 = projection(env, tmp);
+				tmp2 = projection(env, tmp0);
 				if (in_image(tmp1) && in_image(tmp2))
-					draw_line(env, tmp1, tmp2, MARINE);
+					draw_line(env, tmp1, tmp2, BLUE);
 			}
 			tmp0 = tmp0->next;
 		}
@@ -50,14 +50,15 @@ int				fdf(t_env *env)
 	{
 		if (tmp->x != tmp->next->x - 1)
 		{
-			tmp1 = projection(tmp);
-			tmp2 = projection(tmp->next);
+			tmp1 = projection(env, tmp);
+			tmp2 = projection(env, tmp->next);
 			if (in_image(tmp1) && in_image(tmp2))
-				draw_line(env, tmp1, tmp2, GREEN);
+				draw_line(env, tmp1, tmp2, BLUE);
 		}
 		tmp = tmp->next;
 	}
 	draw_vert(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->img, env->origin->x,
+			env->origin->y);
 	return (SUCCESS);
 }
