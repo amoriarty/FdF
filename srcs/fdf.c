@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 14:08:50 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 16:00:49 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/03 16:25:34 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static void			draw_vert(t_mlx *mlx)
 			{
 				tmp1 = projection(mlx, tmp);
 				tmp2 = projection(mlx, tmp0);
-				if (in_img(mlx->img->size, tmp1) &&
-						in_img(mlx->img->size, tmp2))
+				if (in_img(tmp1) && in_img(tmp2))
 					draw_line(mlx, tmp1, tmp2, BLUE);
 			}
 			tmp0 = tmp0->next;
@@ -52,7 +51,7 @@ int					fdf(t_mlx *mlx)
 		{
 			tmp1 = projection(mlx, tmp);
 			tmp2 = projection(mlx, tmp->next);
-			if (in_img(mlx->img->size, tmp1) && in_img(mlx->img->size, tmp2))
+			if (in_img(tmp1) && in_img(tmp2))
 				draw_line(mlx, tmp1, tmp2, BLUE);
 		}
 		tmp = tmp->next;

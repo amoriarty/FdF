@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:15:56 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 10:15:53 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/03 16:24:45 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_node			*projection(t_mlx *mlx, t_node *coor);
 void			init_img(t_mlx *mlx);
 void			mlx_put_pixel_to_image(t_mlx *mlx, t_node *pixel, int color);
 void			draw_line(t_mlx *mlx, t_node *start, t_node *end, int color);
-int				in_img(t_node *size, t_node *coor);
+int				in_img(t_node *coor);
 int				fdf(t_mlx *mlx);
 int				key_hook(int keycode, t_mlx *mlx);
 t_node			*define_img(t_mlx *mlx, t_node *base, int *xmin, int *ymin);
