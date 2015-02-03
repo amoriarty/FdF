@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:25:46 by alegent           #+#    #+#             */
-/*   Updated: 2015/01/30 15:19:39 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/03 16:05:10 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_mlx			*init_mlx(void)
 	new->img = NULL;
 	new->map = NULL;
 	new->max = NULL;
-	new->origin = new_node(X_SIZE / 3, Y_SIZE / 3, 0);
-	new->zoom = 10;
+	new->origin = new_node(0, 0, 0);
+	new->zoom = ZOOM;
 	if (!new->mlx || !new->win)
 		return (NULL);
 	return (new);
