@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/01/30 15:05:34 by alegent          ###   ########.fr        #
+#    Updated: 2015/02/03 10:16:19 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,10 @@ SRCS= srcs/main.c \
 	  srcs/mlx_put_pixel_to_image.c \
 	  srcs/new_node.c \
 	  srcs/projection.c \
+	  srcs/first_projection.c \
 	  srcs/in_img.c \
-	  srcs/key_hook.c
+	  srcs/key_hook.c \
+	  srcs/define_img.c
 
 OBJT= main.o \
 	  draw_line.o \
@@ -39,8 +41,10 @@ OBJT= main.o \
 	  mlx_put_pixel_to_image.o \
 	  new_node.o \
 	  projection.o \
+	  first_projection.o \
 	  in_img.o \
-	  key_hook.o
+	  key_hook.o \
+	  define_img.o
 
 GCC= gcc -Wall -Wextra -Werror
 
