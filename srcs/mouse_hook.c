@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/30 13:06:27 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 10:34:48 by alegent          ###   ########.fr       */
+/*   Created: 2015/02/05 10:29:43 by alegent           #+#    #+#             */
+/*   Updated: 2015/02/05 10:39:47 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+# include <stdio.h>
 
-int				main(int ac, char **av)
+int				mouse_hook(int button, int x, int y, t_mlx *mlx)
 {
-	t_mlx		*mlx;
-
-	if (ac != 2)
-		ft_puterror("fdf", "usage: fdf [map.fdf]");
-	if (!(mlx = init_mlx()))
-		ft_puterror("fdf", "mlx can't be malloc.");
-	mlx->map = get_map(av[1]);
-	mlx->max = get_max(mlx->map);
-	init_img(mlx);
-	mlx_expose_hook(mlx->win, fdf, mlx);
-	mlx_key_hook(mlx->win, key_hook, mlx);
-	mlx_mouse_hook(mlx->win, mouse_hook, mlx);
-	mlx_loop(mlx->mlx);
-	return (EXIT_SUCCESS);
+	x = x;
+	y = y;
+	mlx->zoom += (button == 4) ? 1 : 0;
+	mlx->zoom -= (button == 5) ? 1 : 0;
+	if (button == 4 || button == 5)
+	{
+		mlx_clear_window(mlx->mlx, mlx->win);
+		init_img(mlx);
+		fdf(mlx);
+	}
+	return (SUCCESS);
 }

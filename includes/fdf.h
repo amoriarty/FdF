@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:15:56 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 09:39:13 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 10:34:22 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int				in_img(t_node *coor);
 int				fdf(t_mlx *mlx);
 int				key_hook(int keycode, t_mlx *mlx);
 t_node			*get_min(t_mlx *mlx, t_node *map);
+int				mouse_hook(int button, int x, int y, t_mlx *mlx);
 
 #endif
