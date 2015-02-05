@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:15:56 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 10:34:22 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 11:04:34 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int				fdf(t_mlx *mlx);
 int				key_hook(int keycode, t_mlx *mlx);
 t_node			*get_min(t_mlx *mlx, t_node *map);
 int				mouse_hook(int button, int x, int y, t_mlx *mlx);
+t_node			*first_isometric(t_mlx *mlx, t_node *coor);
+t_node			*isometric(t_mlx *mlx, t_node *coor);
 
 #endif

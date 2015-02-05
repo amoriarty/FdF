@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 14:08:50 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 09:51:39 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 11:10:34 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ static void			draw_vert(t_mlx *mlx)
 		{
 			if (tmp->y == tmp0->y && tmp->x == tmp0->x + 1)
 			{
-				tmp1 = projection(mlx, tmp);
-				tmp2 = projection(mlx, tmp0);
+				tmp1 = (mlx->iso)
+					? isometric(mlx, tmp) : projection(mlx, tmp);
+				tmp2 = (mlx->iso)
+					? isometric(mlx, tmp0) : projection(mlx, tmp0);
 				if (in_img(tmp1) && in_img(tmp2))
 					draw_line(mlx, tmp1, tmp2, mlx->color);
 			}
@@ -49,8 +51,10 @@ int					fdf(t_mlx *mlx)
 	{
 		if (tmp->x != tmp->next->x - 1)
 		{
-			tmp1 = projection(mlx, tmp);
-			tmp2 = projection(mlx, tmp->next);
+			tmp1 = (mlx->iso)
+				? isometric(mlx, tmp) : projection(mlx, tmp);
+			tmp2 = (mlx->iso)
+				? isometric(mlx, tmp->next) : projection(mlx, tmp->next);
 			if (in_img(tmp1) && in_img(tmp2))
 				draw_line(mlx, tmp1, tmp2, mlx->color);
 		}

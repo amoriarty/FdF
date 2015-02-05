@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/02/05 10:35:13 by alegent          ###   ########.fr        #
+#    Updated: 2015/02/05 11:08:12 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS= srcs/main.c \
 	  srcs/in_img.c \
 	  srcs/key_hook.c \
 	  srcs/get_min.c \
-	  srcs/mouse_hook.c
+	  srcs/mouse_hook.c \
+	  srcs/first_isometric.c \
+	  srcs/isometric.c
 
 OBJT= main.o \
 	  draw_line.o \
@@ -46,7 +48,9 @@ OBJT= main.o \
 	  in_img.o \
 	  key_hook.o \
 	  get_min.o \
-	  mouse_hook.o
+	  mouse_hook.o \
+	  first_isometric.o \
+	  isometric.o
 
 GCC= gcc -Wall -Wextra -Werror
 

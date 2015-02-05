@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:09:27 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 10:42:06 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 11:08:41 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ struct						s_mlx
 	t_node					*origin;
 	int						zoom;
 	int						color;
+	int						iso;
 };
 
 #endif

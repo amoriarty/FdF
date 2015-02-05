@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 09:31:42 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 09:40:02 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 11:11:16 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_node				*get_min(t_mlx *mlx, t_node *map)
 	tmp = map;
 	while (tmp)
 	{
-		pro = first_projection(mlx, tmp);
+		pro = (mlx->iso)
+			? first_isometric(mlx, tmp) : first_projection(mlx, tmp);
 		x = (x > pro->x) ? pro->x : x;
 		y = (y > pro->y) ? pro->y : y;
 		tmp = tmp->next;

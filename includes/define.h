@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 11:01:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 09:50:57 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 10:52:09 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define Y_SIZE 1300
 # define PI 3.14159265358979323846
 # define CTE 0.5
+# define CTEE 1
 # define ZOOM 30
 /*
 ** Key defined
