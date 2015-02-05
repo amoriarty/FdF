@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:15:56 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 16:24:45 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 09:39:13 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void			draw_line(t_mlx *mlx, t_node *start, t_node *end, int color);
 int				in_img(t_node *coor);
 int				fdf(t_mlx *mlx);
 int				key_hook(int keycode, t_mlx *mlx);
-t_node			*define_img(t_mlx *mlx, t_node *base, int *xmin, int *ymin);
+t_node			*get_min(t_mlx *mlx, t_node *map);
 
 #endif

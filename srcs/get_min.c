@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_img.c                                       :+:      :+:    :+:   */
+/*   get_min.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/03 09:57:48 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 10:13:41 by alegent          ###   ########.fr       */
+/*   Created: 2015/02/05 09:31:42 by alegent           #+#    #+#             */
+/*   Updated: 2015/02/05 09:40:02 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_node				*define_img(t_mlx *mlx, t_node *base, int *xmin, int *ymin)
+t_node				*get_min(t_mlx *mlx, t_node *map)
 {
-	t_node			*new;
+	int				x;
+	int				y;
 	t_node			*tmp;
-	t_node			*project;
+	t_node			*pro;
 
-	new = NULL;
-	tmp = base;
-	project = NULL;
+	x = 0;
+	y = 0;
+	tmp = map;
 	while (tmp)
 	{
-		project = first_projection(mlx, tmp);
-		new = insert_node(new, project->x, project->y, project->z);
-		*xmin = (*xmin > project->x) ? project->x : *xmin;
-		*ymin = (*ymin > project->y) ? project->y : *ymin;
+		pro = first_projection(mlx, tmp);
+		x = (x > pro->x) ? pro->x : x;
+		y = (y > pro->y) ? pro->y : y;
 		tmp = tmp->next;
 	}
-	*xmin *= (*xmin < 0) ? -1 : 1;
-	*ymin *= (*ymin < 0) ? -1 : 1;
-	return (get_max(new));
+	x *= (x < 0) ? -1 : 1;
+	y *= (y < 0) ? -1 : 1;
+	return (new_node(x, y, 0));
 }

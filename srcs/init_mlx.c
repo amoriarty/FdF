@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:25:46 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 16:05:10 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 09:52:10 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_mlx			*init_mlx(void)
 	new->max = NULL;
 	new->origin = new_node(0, 0, 0);
 	new->zoom = ZOOM;
+	new->color = WHITE;
 	if (!new->mlx || !new->win)
 		return (NULL);
 	return (new);

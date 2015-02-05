@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/02/03 10:16:19 by alegent          ###   ########.fr        #
+#    Updated: 2015/02/05 09:34:27 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS= srcs/main.c \
 	  srcs/first_projection.c \
 	  srcs/in_img.c \
 	  srcs/key_hook.c \
-	  srcs/define_img.c
+	  srcs/get_min.c
 
 OBJT= main.o \
 	  draw_line.o \
@@ -44,7 +44,7 @@ OBJT= main.o \
 	  first_projection.o \
 	  in_img.o \
 	  key_hook.o \
-	  define_img.o
+	  get_min.o
 
 GCC= gcc -Wall -Wextra -Werror
 

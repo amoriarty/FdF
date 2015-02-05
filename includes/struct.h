@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:09:27 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/03 10:09:21 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 09:51:51 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ struct						s_img
 	int						bpp;
 	int						sizeline;
 	int						endian;
-	t_node					*size;
-	int						xmin;
-	int						ymin;
+	t_node					*min;
 };
 
 typedef struct s_mlx		t_mlx;
@@ -45,6 +43,7 @@ struct						s_mlx
 	t_node					*max;
 	t_node					*origin;
 	int						zoom;
+	int						color;
 };
 
 #endif
