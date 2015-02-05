@@ -6,11 +6,18 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 13:06:27 by alegent           #+#    #+#             */
-/*   Updated: 2015/02/05 10:34:48 by alegent          ###   ########.fr       */
+/*   Updated: 2015/02/05 12:46:20 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int		is_fdf(char *file)
+{
+	if (!ft_strstr(file, ".fdf"))
+		ft_puterror("fdf", "usage: fdf [map.fdf]");
+	return (TRUE);
+}
 
 int				main(int ac, char **av)
 {
@@ -18,6 +25,7 @@ int				main(int ac, char **av)
 
 	if (ac != 2)
 		ft_puterror("fdf", "usage: fdf [map.fdf]");
+	is_fdf(av[1]);
 	if (!(mlx = init_mlx()))
 		ft_puterror("fdf", "mlx can't be malloc.");
 	mlx->map = get_map(av[1]);
