@@ -5,71 +5,76 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/02 17:21:30 by alegent           #+#    #+#              #
-#    Updated: 2015/02/05 11:08:12 by alegent          ###   ########.fr        #
+#    Created: 2015/02/13 12:17:39 by alegent           #+#    #+#              #
+#    Updated: 2015/02/13 13:58:08 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
 
-SRCS= srcs/main.c \
-	  srcs/draw_line.c \
-	  srcs/fdf.c \
-	  srcs/get_map.c \
-	  srcs/get_max.c \
-	  srcs/init_img.c \
-	  srcs/init_mlx.c \
-	  srcs/init_node.c \
-	  srcs/insert_node.c \
-	  srcs/mlx_put_pixel_to_image.c \
-	  srcs/new_node.c \
-	  srcs/projection.c \
-	  srcs/first_projection.c \
-	  srcs/in_img.c \
-	  srcs/key_hook.c \
-	  srcs/get_min.c \
-	  srcs/mouse_hook.c \
-	  srcs/first_isometric.c \
-	  srcs/isometric.c
+SRC_PATH= srcs/
+SRC_NAME= draw_line.c \
+		  fdf.c \
+		  first_isometric.c \
+		  first_projection.c \
+		  get_map.c \
+		  get_max.c \
+		  get_min.c \
+		  in_img.c \
+		  init_img.c \
+		  init_mlx.c \
+		  init_node.c \
+		  insert_node.c \
+		  isometric.c \
+		  key_hook.c \
+		  main.c \
+		  mlx_put_pixel_to_image.c \
+		  mouse_hook.c \
+		  new_node.c \
+		  projection.c
+SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 
-OBJT= main.o \
-	  draw_line.o \
-	  fdf.o \
-	  get_map.o \
-	  get_max.o \
-	  init_img.o \
-	  init_mlx.o \
-	  init_node.o \
-	  insert_node.o \
-	  mlx_put_pixel_to_image.o \
-	  new_node.o \
-	  projection.o \
-	  first_projection.o \
-	  in_img.o \
-	  key_hook.o \
-	  get_min.o \
-	  mouse_hook.o \
-	  first_isometric.o \
-	  isometric.o
+OBJ_PATH= obj/
+OBJ_NAME= $(SRC_NAME:.c=.o)
+OBJ= $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 GCC= gcc -Wall -Wextra -Werror
 
+INC_LIB= libft/
+INC_PATH= includes/
+INC_MLX= mlx/
+INC= -I $(INC_LIB) -I $(INC_PATH) -I $(INC_MLX)
+
+FRAMWORK= -framework OpenGL -framework AppKit
+
+LIB= -L $(INC_LIB) -lft -L $(INC_MLX) -lmlx
+
 all: $(NAME)
 
-$(NAME):
-	@make -C mlx/ re
-	@make -C libft/ re
-	@make -C libft/ clean
-	@$(GCC) $(SRCS) -I includes/ -I libft/ -I mlx/ \
-		-framework OpenGL -framework AppKit \
-		./libft/libft.a ./mlx/libmlx.a -o $(NAME)
+$(NAME): $(OBJ)
+	@make -C $(INC_MLX) re
+	@make -C $(INC_LIB) re
+	@make -C $(INC_LIB) clean
+	@echo "Librairy has been compil"
+	@$(GCC) $(INC) $(LIB) $(FRAMWORK) $(OBJ) -o $(NAME)
+	@echo "Your program is ready to go \!"
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" 2> /dev/null
+	@$(GCC) $(LIB) $(INC) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJT)
+	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_PATH)
 
-fclean:
-	@rm -f $(NAME)
+fclean: clean
+	@rm -rf $(NAME)
 
-re: fclean all clean
+re: fclean all
 
-.PHONY: re clean fclean
+norme:
+	@norminette $(INC_LIB)*.[ch]
+	@norminette $(SRC)
+	@norminette $(INC_PATH)*.h
+
+.PHONY: clean fclean re norme
