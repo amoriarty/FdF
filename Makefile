@@ -61,7 +61,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" 2> /dev/null
-	@$(GCC) $(LIB) $(INC) -o $@ -c $<
+	@$(GCC) $(INC) -o $@ -c $<
 
 clean:
 	@rm -rf $(OBJ)

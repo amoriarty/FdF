@@ -1,6 +1,6 @@
 #
 #
-#  15/11/2014
+#  14/10/2015
 #  ol@staff.42.fr
 #
 
@@ -10,7 +10,7 @@ Interface simplifiee de programmation graphique pour debutant
 #
 
 Cette minilibX est la version native pour MacOSX.
-Elle n'utilise plus les librairies graphiques X11, ni XQuartz le serveur X pour MacOSX.
+[ Elle n'utilise plus les librairies graphiques X11, ni XQuartz le serveur X pour MacOSX. ]
 L'interface / l'API, reste identique a la version precedente. Les man presents dans la minilibX
 d'origine sont toujours valides.
 
@@ -24,6 +24,6 @@ graphiques OpenGL moderne.
 
 #
 
-License: la MinilibX est fournie sous license BSD: Copyright Olivier Crouzet - 2014
-
+License: la MinilibX macos est fournie sous license BSD: Copyright Olivier Crouzet - 2014-2015
+         la MinilibX est fournie sous license BSD:  Copyright Olivier Crouzet - 1999-2015
 #

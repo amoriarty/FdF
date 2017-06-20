@@ -14,8 +14,8 @@
 
 int				mouse_hook(int button, int x, int y, t_mlx *mlx)
 {
-	x = x;
-	y = y;
+	(void)x;
+	(void)y;
 	mlx->zoom += (button == 4) ? 1 : 0;
 	mlx->zoom -= (button == 5) ? 1 : 0;
 	mlx->iso = (button == 1) ? TRUE : mlx->iso;

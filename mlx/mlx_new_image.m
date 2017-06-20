@@ -77,8 +77,10 @@ void    mlx_put_image_to_window(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, mlx
 {
   mlx_img_ctx_t	*imgctx;
 
-  [(id)(win_ptr->winid) selectGLContext];
+  if (!win_ptr->pixmgt)
+    return ;
 
+  [(id)(win_ptr->winid) selectGLContext];
   imgctx = add_img_to_ctx(img_ptr, win_ptr);
 
   // update texture
@@ -112,18 +114,24 @@ int mlx_string_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, in
   int		gX;
   int		gY;
 
+  if (!win_ptr->pixmgt)
+    return(0);
+
   [(id)(win_ptr->winid) selectGLContext];
 
   imgctx = add_img_to_ctx(mlx_ptr->font, win_ptr);
 
   while (*string)
     {
-      gX = FONT_WIDTH*((*string)%32);
-      gY = FONT_HEIGHT*(((*string)/32)-1);
-      //      printf("put char %c pos %d %d\n", *string, gX, gY);
-      [(id)(win_ptr->winid) mlx_gl_draw_font:mlx_ptr->font andCtx:imgctx andX:x andY:y andColor:color glyphX:gX glyphY:gY];
+      if (*string >= 32 && *string <= 127)
+	{
+	  gX = (FONT_WIDTH+2)*(*string-32);
+	  gY = 0;
+	  //      printf("put char %c pos %d %d\n", *string, gX, gY);
+	  [(id)(win_ptr->winid) mlx_gl_draw_font:mlx_ptr->font andCtx:imgctx andX:x andY:y andColor:color glyphX:gX glyphY:gY];
+	  x += FONT_WIDTH;
+	}
       string ++;
-      x += FONT_WIDTH/2;
     }
 
   win_ptr->nb_flush ++;
@@ -135,6 +143,7 @@ int     mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_todel)
 {
   mlx_img_ctx_t	ctx_first;
   mlx_img_ctx_t	*ctx;
+  mlx_img_ctx_t	*ctx_to_del;
   mlx_img_list_t img_first;
   mlx_img_list_t *img;
   mlx_win_list_t *win;
@@ -162,7 +171,9 @@ int     mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_todel)
 	      [(id)(win->winid) selectGLContext];
 	      glDeleteBuffers(1, &(ctx->next->vbuffer));
 	      glDeleteTextures(1, &(ctx->next->texture));
+	      ctx_to_del = ctx->next;
 	      ctx->next = ctx->next->next;
+	      free(ctx_to_del);
 	    }
 	  ctx = ctx->next;
 	}
